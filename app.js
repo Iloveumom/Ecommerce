@@ -1,5 +1,10 @@
 const express = require("express");
 const app = express();
+
+app.use((req, res, next) => {
+  console.log(`${req.method} request made to ${req.url}`);
+  next(); // very important
+});
 // GET /products
 app.get("/products", (req, res) => {
   res.send("Here is the list of all products.");
